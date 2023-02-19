@@ -6,6 +6,4 @@
 - **myfiles** - contains all the files
 - **currentViewingFolder** - contains the folder data which is currently selected and being viewed on window
 
-<!-- # visit the [site](https://djfiesta.vercel.app/) 🚀 -->
-
 <img src="https://res.cloudinary.com/dxxj6bsgc/image/upload/v1676824761/Screenshot_20230219_220632_evsikk.png"></img>

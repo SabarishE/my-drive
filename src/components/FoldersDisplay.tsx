@@ -1,4 +1,4 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack, Text, Box } from "@chakra-ui/react";
 import { Folder } from "@emotion-icons/boxicons-solid/Folder";
 import { StorageContext } from "context/storageContext";
 import { useContext, useState } from "react";
@@ -67,47 +67,49 @@ export const FoldersDisplay = ({
 
   return (
     <>
-      <StyledGrid
-        columns={[1, 2, 4, null]}
-        mt={[2, 4]}
-        maxHeight="200px"
-        overflow="auto"
-        pr={2}
-        spacing={4}
-      >
-        {folders.map((folder, index) => {
-          const isDropZone = index === currentIndex;
+      <Box minH="200px">
+        <StyledGrid
+          columns={[1, 2, 4, null]}
+          mt={[2, 4]}
+          maxHeight="200px"
+          overflow="auto"
+          pr={2}
+          spacing={4}
+        >
+          {folders.map((folder, index) => {
+            const isDropZone = index === currentIndex;
 
-          return (
-            <HStack
-              key={index}
-              h="60px"
-              p={4}
-              spacing={4}
-              border={isDropZone ? "1px solid #5D5CDF" : "1px solid #cfcfcf"}
-              alignItems="center"
-              borderRadius="4px"
-              onDoubleClick={() => {
-                setCurrentViewingFolder(folder.name, viewingFolder);
-              }}
-              cursor="pointer"
-              transition="0.3s"
-              onDrop={(e) => {
-                if (isDropZone) handleDrop(e, folder.name);
-              }}
-              onDragLeave={handleDragOut}
-              onDragEnter={(e) => handleDragIn(e, index)}
-              onDragOver={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
-            >
-              <Folder size="24px" color="#616367" />
-              <Text color="#616367">{folder.name}</Text>
-            </HStack>
-          );
-        })}
-      </StyledGrid>
+            return (
+              <HStack
+                key={index}
+                h="60px"
+                p={4}
+                spacing={4}
+                border={isDropZone ? "1px solid #5D5CDF" : "1px solid #cfcfcf"}
+                alignItems="center"
+                borderRadius="4px"
+                onDoubleClick={() => {
+                  setCurrentViewingFolder(folder.name, viewingFolder);
+                }}
+                cursor="pointer"
+                transition="0.3s"
+                onDrop={(e) => {
+                  if (isDropZone) handleDrop(e, folder.name);
+                }}
+                onDragLeave={handleDragOut}
+                onDragEnter={(e) => handleDragIn(e, index)}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+              >
+                <Folder size="24px" color="#616367" />
+                <Text color="#616367">{folder.name}</Text>
+              </HStack>
+            );
+          })}
+        </StyledGrid>
+      </Box>
     </>
   );
 };
